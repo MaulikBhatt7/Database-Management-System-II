@@ -12,7 +12,7 @@ CREATE TABLE EMPLOYEE(
 
 SELECT * FROM EMPLOYEE;
 
---1. Display all the employees whose name starts with ìmî and 4 th character is ìhî.
+--1. Display all the employees whose name starts with ‚Äúm‚Äù and 4 th character is ‚Äúh‚Äù.
 		SELECT ENAME FROM EMPLOYEE WHERE ENAME LIKE 'M__H%';
 
 --2. Find the value of 3 raised to 5. Label the column as output.
@@ -21,13 +21,13 @@ SELECT * FROM EMPLOYEE;
 --3. Write a query to subtract 20 days from the current date.
 		SELECT GETDATE()-20;
 
---4. Write a query to display name of employees whose name starts with ìjî and contains ìnî in their name.
+--4. Write a query to display name of employees whose name starts with ‚Äúj‚Äù and contains ‚Äún‚Äù in their name.
 		SELECT ENAME FROM EMPLOYEE WHERE ENAME LIKE 'J%N%'; 
 
---5. Display 2nd to 9th character of the given string ìSQL Programmingî.
+--5. Display 2nd to 9th character of the given string ‚ÄúSQL Programming‚Äù.
 		SELECT SUBSTRING('SQL PROGRAMMING',2,8) ;
 
---6. Display name of the employees whose city name ends with ìneyî &contains six characters.
+--6. Display name of the employees whose city name ends with ‚Äúney‚Äù &contains six characters.
 		SELECT ENAME FROM EMPLOYEE WHERE CITY LIKE '___NEY';
 
 --7. Write a query to convert value 15 to string.
@@ -40,8 +40,8 @@ SELECT * FROM EMPLOYEE;
 --9. Set the value of department to Marketing who belongs to London city.
 		UPDATE EMPLOYEE SET DEPARTMENT='MARKETING' WHERE CITY='LONDON';
 
---10. Display all the employees whose name ends with either ìnî or ìyî.
-		SELECT * FROM EMPLOYEE WHERE ENAME LIKE '%[N-Y]';
+--10. Display all the employees whose name ends with either ‚Äún‚Äù or ‚Äúy‚Äù.
+		SELECT * FROM EMPLOYEE WHERE ENAME LIKE '%[N,Y]';
 
 --11. Find smallest integer value that is greater than or equal to 63.1, 63.8 and -63.2.
 		SELECT CEILING(63.1),CEILING(63.8),CEILING(-63.2);
@@ -70,7 +70,7 @@ SELECT * FROM EMPLOYEE;
 --19. List the city having total salaries more than 15000 and employees joined after 1st January, 2014.
 		SELECT CITY FROM EMPLOYEE WHERE JOININGDATE>'2014-01-01' GROUP BY CITY HAVING SUM(SALARY)>15000;
 
--- 20. Write a query to replace ìuî with ìooî in Ename.
+-- 20. Write a query to replace ‚Äúu‚Äù with ‚Äúoo‚Äù in Ename.
 		SELECT REPLACE(ENAME,'U','OO') FROM EMPLOYEE;
 
 --21. Display city with average salaries and total number of employees belongs to each city. 
