@@ -219,7 +219,7 @@ AS
 --Create Views
 
 
---1 . Create a view that display first 100 workers details.
+--1. Create a view that display first 100 workers details.
 
 Create View View_Top100
 As
@@ -228,7 +228,7 @@ As
 select * from View_Top100
 
 
---2 Create a view that displays designation wise maximum, minimum & total salaries.
+--2. Create a view that displays designation wise maximum, minimum & total salaries.
 
 ALTER View View_Min_Max_Total_Salary_By_Designation
 As
@@ -238,7 +238,7 @@ As
 
 SELECT * FROM View_Min_Max_Total_Salary_By_Designation;
 
---3 Create a view that displays Worker’s first name with their salaries & joining date, it also displays
+--3. Create a view that displays Worker’s first name with their salaries & joining date, it also displays
 --  duration column which is difference of joining date with respect to current date.
 
 CREATE VIEW VIEW_FIRSTNAME_SALARY_JOININGDATE_DURATION
@@ -248,7 +248,7 @@ AS
 SELECT * FROM VIEW_FIRSTNAME_SALARY_JOININGDATE_DURATION;
 
 
---4 Create a view which shows department & designation wise total number of workers.
+--4. Create a view which shows department & designation wise total number of workers.
 
 CREATE VIEW VIEW_TOTAL_WORKER_BY_DEPARTMENT_DESIGNATION
 AS
@@ -262,7 +262,7 @@ AS
 SELECT * FROM VIEW_TOTAL_WORKER_BY_DEPARTMENT_DESIGNATION;
 
 
---5 Create a view that displays worker names who don’t have either in any department or designation.
+--5. Create a view that displays worker names who don’t have either in any department or designation.
 
 CREATE VIEW VIEW_WORKER_WITHOUT_DEPARTMENT_OR_DESIGNATION
 AS 
@@ -278,7 +278,7 @@ SELECT * FROM VIEW_WORKER_WITHOUT_DEPARTMENT_OR_DESIGNATION;
 
 --Create Function
 
---1 Create a table valued function which accepts DepartmentID as a parameter & returns a worker
+--1. Create a table valued function which accepts DepartmentID as a parameter & returns a worker
 --  table based on DepartmentID.
 
 CREATE FUNCTION FUN_SELECT_BY_DEPARTMENTID(@DEPARTMENTID INT)
@@ -289,7 +289,7 @@ AS
 select * from dbo.FUN_SELECT_BY_DEPARTMENTID(1);
 
 
---2 Create a table valued function which returns a table with unique city names from worker table.
+--2. Create a table valued function which returns a table with unique city names from worker table.
 
 CREATE FUNCTION FUN_UNIQUE_CITY_FROM_WORKER()
 RETURNS TABLE
@@ -297,7 +297,7 @@ AS
 	RETURN (SELECT DISTINCT CITY FROM WORKER)
 
 
---3 Create a scalar valued function which accepts two parameters start date & end date, and
+--3. Create a scalar valued function which accepts two parameters start date & end date, and
 --  returns a date difference in days
 
 CREATE FUNCTION FUN_DIFFERENCE_IN_DAYS(@StartDate datetime, @EndDate datetime)
@@ -307,7 +307,7 @@ BEGIN
 	RETURN (DATEDIFF(DAY,'@STARTDATE','@ENDDATE'));
 END
 
---4,5  Create a scalar valued function which accepts two parameters year in integer & month in
+--4.  Create a scalar valued function which accepts two parameters year in integer & month in
 --   integer and returns total days in passed month & year.
 
 
