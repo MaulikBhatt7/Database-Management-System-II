@@ -131,7 +131,8 @@ AS BEGIN
 END
 
 
---All tables SelectAll (If foreign key is available than do write join and take columns on select list)
+--All tables SelectAll (If foreign key is available than do write join and take columns on select list)
+
 CREATE PROC PR_SELECT_ALL
 AS 
 	SELECT WORKERID, FIRSTNAME, LASTNAME, SALARY, JOININGDATE, P.DepartmentID, DEPARTMENTNAME, P.DESIGNATIONID, DESIGNATIONNAME 
@@ -173,7 +174,7 @@ AS
 
 
 --Create Procedure that takes Department Name & Designation Name as Input and Returns a 
---table with Worker’s First Name, Salary, Joining Date & Department Name
+--table with Workerâ€™s First Name, Salary, Joining Date & Department Name
 
 CREATE PROC PR_TABLE_PERSON
 @DEPARTMENTNAME   VARCHAR(100),
@@ -188,7 +189,7 @@ AS
 
 	WHERE DEPARTMENTNAME = @DEPARTMENTNAME AND DESIGNATIONNAME = @DESIGNATIONNAME;
 
--- Create Procedure that takes FirstName as an input parameter and displays’ all the details of 
+-- Create Procedure that takes FirstName as an input parameter and displaysâ€™ all the details of 
 --the worker with their department & designation name
 
 CREATE PROC PR_FIRSTNAME_DETAILS
@@ -237,11 +238,31 @@ As
 
 SELECT * FROM View_Min_Max_Total_Salary_By_Designation;
 
---3 Create a view that displays Worker’s first name with their salaries & joining date, it also displays
---  duration column which is difference of joining date with respect to current date.CREATE VIEW VIEW_FIRSTNAME_SALARY_JOININGDATE_DURATIONAS	SELECT FIRSTNAME, SALARY, JOININGDATE, DATEDIFF(YEAR,JoiningDate,GETDATE()) AS 'DURATION' FROM Person2;SELECT * FROM VIEW_FIRSTNAME_SALARY_JOININGDATE_DURATION;--4 Create a view which shows department & designation wise total number of workers.CREATE VIEW VIEW_TOTAL_WORKER_BY_DEPARTMENT_DESIGNATIONAS	SELECT DESIGNATIONNAME,DEPARTMENTNAME,COUNT(WORKERID) AS 'TOTAL_WORKER'	FROM PERSON2 P INNER JOIN Department2 DP 
+--3 Create a view that displays Workerâ€™s first name with their salaries & joining date, it also displays
+--  duration column which is difference of joining date with respect to current date.
+
+CREATE VIEW VIEW_FIRSTNAME_SALARY_JOININGDATE_DURATION
+AS
+	SELECT FIRSTNAME, SALARY, JOININGDATE, DATEDIFF(YEAR,JoiningDate,GETDATE()) AS 'DURATION' FROM Person2;
+
+SELECT * FROM VIEW_FIRSTNAME_SALARY_JOININGDATE_DURATION;
+
+
+--4 Create a view which shows department & designation wise total number of workers.
+
+CREATE VIEW VIEW_TOTAL_WORKER_BY_DEPARTMENT_DESIGNATION
+AS
+	SELECT DESIGNATIONNAME,DEPARTMENTNAME,COUNT(WORKERID) AS 'TOTAL_WORKER'
+	FROM PERSON2 P INNER JOIN Department2 DP 
 	ON P.DepartmentID  = DP.DepartmentID
 	INNER JOIN Designation2 DS
-	ON P.DesignationID = DS.DesignationID	GROUP BY DS.DESIGNATIONNAME, DP.DEPARTMENTNAME;SELECT * FROM VIEW_TOTAL_WORKER_BY_DEPARTMENT_DESIGNATION;--5 Create a view that displays worker names who don’t have either in any department or designation.
+	ON P.DesignationID = DS.DesignationID
+	GROUP BY DS.DESIGNATIONNAME, DP.DEPARTMENTNAME;
+
+SELECT * FROM VIEW_TOTAL_WORKER_BY_DEPARTMENT_DESIGNATION;
+
+
+--5 Create a view that displays worker names who donâ€™t have either in any department or designation.
 
 CREATE VIEW VIEW_WORKER_WITHOUT_DEPARTMENT_OR_DESIGNATION
 AS 
@@ -250,7 +271,9 @@ AS
 
 SELECT * FROM VIEW_WORKER_WITHOUT_DEPARTMENT_OR_DESIGNATION;
 
-
+
+
+
 
 
 --Create Function
@@ -303,4 +326,4 @@ BEGIN
 
 END
 
- DBO.FUN_TOTAL_DAYS_BY_MONTH_AND_YEAR(2,2012)
+SELECT DBO.FUN_TOTAL_DAYS_BY_MONTH_AND_YEAR(2,2012)
